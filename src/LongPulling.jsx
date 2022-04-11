@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from "axios";
 
 const LongPulling = () => {
     const [messages, setMessages] = useState([])
@@ -9,12 +10,19 @@ const LongPulling = () => {
         setValue(inputValue)
     }
 
+    const sendMessage = async () => {
+        await axios.post('http://localhost:5000/new-messages', {
+            message: value,
+            id: Date.now()
+        })
+    }
+
     return (
         <div className="center">
         <div>
             <div className="form">
                 <input type="text" value={value} onChange={onChangeHandler}/>
-                <button>Send</button>
+                <button onClick={sendMessage}>Send</button>
             </div>
             <div className="messages">
                 {messages?.map(message =>

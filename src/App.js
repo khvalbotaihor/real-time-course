@@ -1,8 +1,10 @@
 import './app.css';
+import LongPulling from "./LongPulling";
 
 function App() {
   return (
-    <div>wqeq
+    <div>
+      <LongPulling />
     </div>
   );
 }
